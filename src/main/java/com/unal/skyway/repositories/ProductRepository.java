@@ -1,11 +1,10 @@
 package com.unal.skyway.repositories;
 
 import com.unal.skyway.models.Product;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ProductRepository extends CrudRepository<Product, String> {
+public interface ProductRepository extends MongoRepository<Product, String> {
 
-    @Override
-    public void delete(Product product); // this is the only method that is not included in CrudRepository class
+    Product delete(int id);
 
 }

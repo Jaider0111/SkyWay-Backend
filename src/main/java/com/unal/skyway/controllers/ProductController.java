@@ -1,10 +1,10 @@
 package com.unal.skyway.controllers;
 
-import com.unal.skyway.repositories.ProductRepository;
+import com.unal.skyway.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unal.skyway.models.Product;
 
@@ -14,24 +14,23 @@ import java.util.Map;
 public class ProductController {
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductService productService;
 
-
-    @RequestMapping("/Create")
+    @RequestMapping("/API/Products/Create")
     @PostMapping
-    public String create(@RequestParam String n,
-                         @RequestParam String d,
-                         @RequestParam boolean isCoun,
-                         @RequestParam int a,
-                         @RequestParam float p,
-                         @RequestParam boolean isCust,
-                         @RequestParam Map<String, List<String>> o,
-                         @RequestParam List<String> imgs) {
+    public String create(@RequestBody String n,
+                         @RequestBody String d,
+                         @RequestBody boolean isCoun,
+                         @RequestBody int a,
+                         @RequestBody float p,
+                         @RequestBody boolean isCust,
+                         @RequestBody Map<String, List<String>> o,
+                         @RequestBody List<String> imgs) {
         Product product = new Product(n, d, isCoun, p, isCust, imgs);
         if (product.isCountable) product.setAmount(a);
         if (product.isCustomizable) product.setOptions(o);
 
-        productRepository.save(product);
+        productService.create(product);
         return "redirect:/Create";
     }
 }

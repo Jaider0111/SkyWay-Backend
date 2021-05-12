@@ -29,6 +29,17 @@ public class Product {
         this.images = imgs;
     }
 
+    public Product(String n, String d, boolean isCoun, int a, float p, boolean isCust, Map<String, List<String>> o, List<String> imgs) {
+        this.name = n;
+        this.desc = d;
+        this.isCountable = isCoun;
+        this.amount = a;
+        this.price = p;
+        this.isCustomizable = isCust;
+        this.options = o;
+        this.images = imgs;
+    }
+
     public int getId() { return id; }
 
     public String getName() { return name; }
