@@ -14,7 +14,7 @@ public class ProductController {
 
     @PostMapping("/api/products/create")
     public String create(@RequestBody Product product) {
-        p = productService.create(product);
+        Product p = productService.create(product);
         return p.getId();
     }
 }
