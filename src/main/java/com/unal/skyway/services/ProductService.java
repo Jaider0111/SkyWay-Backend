@@ -10,8 +10,8 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public Product delete(int id) {
-        return productRepository.delete(id);
+    public void deleteById(String id) {
+        productRepository.deleteById(id);
     }
 
     public Product create(Product product) {

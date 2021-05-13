@@ -12,6 +12,7 @@ public class Product {
     @Id
     private String id;
     private String name;
+    private String category;
     private String description;
     public boolean isCountable;
     private int amount;
@@ -24,8 +25,9 @@ public class Product {
 
     }
 
-    public Product(String name, String description, boolean isCountable, float price, boolean isCustomizable, List<String> images) {
+    public Product(String name, String category, String description, boolean isCountable, float price, boolean isCustomizable, List<String> images) {
         this.name = name;
+        this.category = category;
         this.description = description;
         this.isCountable = isCountable;
         this.price = price;
@@ -33,8 +35,9 @@ public class Product {
         this.images = images;
     }
 
-    public Product(String name, String description, boolean isCountable, int amount, float price, boolean isCustomizable, Map<String, List<String>> options, List<String> images) {
+    public Product(String name, String category, String description, boolean isCountable, int amount, float price, boolean isCustomizable, Map<String, List<String>> options, List<String> images) {
         this.name = name;
+        this.category = category;
         this.description = description;
         this.isCountable = isCountable;
         this.amount = amount;
@@ -48,6 +51,9 @@ public class Product {
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
     public String getDesc() { return description; }
     public void setDesc(String description) { this.description = description; }

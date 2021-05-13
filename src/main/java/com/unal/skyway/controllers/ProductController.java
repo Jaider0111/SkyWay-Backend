@@ -2,6 +2,7 @@ package com.unal.skyway.controllers;
 
 import com.unal.skyway.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -17,4 +18,5 @@ public class ProductController {
         Product p = productService.create(product);
         return p.getId();
     }
+
 }
