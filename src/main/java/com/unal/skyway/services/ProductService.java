@@ -13,6 +13,7 @@ public class ProductService {
     public Product delete(int id) {
         return productRepository.delete(id);
     }
+
     public Product create(Product product) {
         return productRepository.save(product);
     }

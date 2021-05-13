@@ -10,9 +10,9 @@ import java.util.List;
 public class Product {
 
     @Id
-    private int id;
+    private String id;
     private String name;
-    private String desc;
+    private String description;
     public boolean isCountable;
     private int amount;
     private float price;
@@ -20,45 +20,49 @@ public class Product {
     private Map<String, List<String>> options;
     private List<String> images;
 
-    public Product(String n, String d, boolean isCoun, float p, boolean isCust, List<String> imgs) {
-        this.name = n;
-        this.desc = d;
-        this.isCountable = isCoun;
-        this.price = p;
-        this.isCustomizable = isCust;
-        this.images = imgs;
+    public Product() {
+
     }
 
-    public Product(String n, String d, boolean isCoun, int a, float p, boolean isCust, Map<String, List<String>> o, List<String> imgs) {
-        this.name = n;
-        this.desc = d;
-        this.isCountable = isCoun;
-        this.amount = a;
-        this.price = p;
-        this.isCustomizable = isCust;
-        this.options = o;
-        this.images = imgs;
+    public Product(String name, String description, boolean isCountable, float price, boolean isCustomizable, List<String> images) {
+        this.name = name;
+        this.description = description;
+        this.isCountable = isCountable;
+        this.price = price;
+        this.isCustomizable = isCustomizable;
+        this.images = images;
     }
 
-    public int getId() { return id; }
+    public Product(String name, String description, boolean isCountable, int amount, float price, boolean isCustomizable, Map<String, List<String>> options, List<String> images) {
+        this.name = name;
+        this.description = description;
+        this.isCountable = isCountable;
+        this.amount = amount;
+        this.price = price;
+        this.isCustomizable = isCustomizable;
+        this.options = options;
+        this.images = images;
+    }
+
+    public String getId() { return id; }
 
     public String getName() { return name; }
-    public void setName(String n) { this.name = n; }
+    public void setName(String name) { this.name = name; }
 
-    public String getDesc() { return desc; }
-    public void setDesc(String d) { this.desc = d; }
+    public String getDesc() { return description; }
+    public void setDesc(String description) { this.description = description; }
 
     public int getAmount() { return amount; }
-    public void setAmount(int a) { this.amount = a; }
+    public void setAmount(int amount) { this.amount = amount; }
 
     public float getPrice() { return price; }
-    public void setPrice(float p) { this.price = p; }
+    public void setPrice(float price) { this.price = price; }
 
     public Map<String, List<String>> getOptions() { return options; }
-    public void setOptions(Map<String, List<String>> o) { this.options = o; }
+    public void setOptions(Map<String, List<String>> options) { this.options = options; }
 
     public List<String> getImages() { return images; }
-    public void setImages(List<String> imgs) { this.images = imgs; }
+    public void setImages(List<String> images) { this.images = images; }
 }
 
 
