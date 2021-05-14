@@ -91,7 +91,7 @@ public class Product {
 
 
     public String getBusinessId() { return businessId; }
-    public void setBusinessId(String images) { this.businessId = businessId; }
+    public void setBusinessId(String businessId) { this.businessId = businessId; }
 }
 
 
