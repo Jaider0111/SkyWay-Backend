@@ -25,32 +25,32 @@ public class LoginController {
     }
     @PostMapping("/registration/user")
     public String registrationUser (@RequestBody User user){
-        if ( serviceUser.findUserByIdentificacion ( user.getIdentificacion() ) != null ){
+        if ( serviceUser.findUserByIdentification ( user.getIdentification() ) != null ){
             return "La identificacion ya se encuentra registrado" ;
         }
-        if ( serviceUser.findUserByEmail ( user.getCorreo() ) != null ){
+        if ( serviceUser.findUserByEmail ( user.getEmail() ) != null ){
             return "El correo ya se encuentra registrado" ;
         }
-        if ( serviceStore.findStoreByEmail ( user.getCorreo() ) != null ){
+        if ( serviceStore.findStoreByEmail ( user.getEmail() ) != null ){
             return "El correo ya se encuentra registrado" ;
         }
         User user1 = serviceUser.saveUser(user);
-        return user1.getNombres();
+        return user1.first_name;
     }
 
     @PostMapping("/registration/store")
     public String registrationStore (@RequestBody Store store){
-        if ( serviceStore.findStoreByIdentificacion ( store.getIdentificacion() ) != null ){
+        if ( serviceStore.findStoreByIdentificacion ( store.getIdentification() ) != null ){
             return "La identificacion ya se encuentra registrado" ;
         }
-        if ( serviceUser.findUserByEmail ( store.getCorreo() ) != null ){
+        if ( serviceUser.findUserByEmail ( store.getEmail() ) != null ){
             return "El correo ya se encuentra registrado" ;
         }
-        if ( serviceStore.findStoreByEmail ( store.getCorreo() ) != null ){
+        if ( serviceStore.findStoreByEmail ( store.getEmail()) != null ){
             return "El correo ya se encuentra registrado" ;
         }
         Store store1 = serviceStore.saveStore(store);
-        return store1.getNombre();
+        return store1.name;
     }
 
     @DeleteMapping("/login")
@@ -67,10 +67,10 @@ public class LoginController {
             return "null";
         }
         else if ( user != null ){
-            return user.getIdentificacion();
+            return user.getIdentification();
         }
         else{
-            return store.getIdentificacion();
+            return store.getIdentification();
         }
     }
 

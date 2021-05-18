@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 
 public interface StoreRepository extends MongoRepository<Store, String> {
-    Store findStoreByCorreo(String correo);
-    Store findStoreByIdentificacion(String identificacion);
-    Store deleteStoreByCorreo(String correo);
+    Store findStoreByEmail(String email);
+    Store findStoreByIdentification(String identificaction);
+    Store deleteStoreByEmail(String email);
 }

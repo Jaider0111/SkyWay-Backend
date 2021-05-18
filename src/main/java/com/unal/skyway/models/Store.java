@@ -10,15 +10,15 @@ public class Store {
 
     @Id
     public String id;
-    public String identificacion;
-    public String nombre;
-    public String contrasena;
-    public String categoria;
-    public String[] horario;
-    public String telefono;
-    public String correo;
-    public String direccion;
-    public String[] producto;
+    public String identification;
+    public String name;
+    public String password;
+    public String category;
+    public String[] schedule;
+    public String phone;
+    public String email;
+    public String address;
+    public String[] product;
 
     public String getId() {
         return id;
@@ -28,105 +28,105 @@ public class Store {
         this.id = id;
     }
 
-    public String getIdentificacion() {
-        return identificacion;
+    public String getIdentification() {
+        return identification;
     }
 
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
+    public void setIdentification(String identification) {
+        this.identification = identification;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public String[] getHorario() {
-        return horario;
+    public String[] getSchedule() {
+        return schedule;
     }
 
-    public void setHorario(String[] horario) {
-        this.horario = horario;
+    public void setSchedule(String[] schedule) {
+        this.schedule = schedule;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String[] getProducto() {
-        return producto;
+    public String[] getProduct() {
+        return product;
     }
 
-    public void setProducto(String[] producto) {
-        this.producto = producto;
+    public void setProduct(String[] product) {
+        this.product = product;
     }
 
     public Store() {}
 
-    public Store(String identificacion, String nombre, String contrasena, String categoria, String[] horario, String telefono, String correo, String direccion, String[] producto) {
-        this.identificacion = identificacion;
-        this.nombre = nombre;
-        this.contrasena = contrasena;
-        this.categoria = categoria;
-        this.horario = horario;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.direccion = direccion;
-        this.producto = producto;
+    public Store(String identification, String name, String password, String category, String[] schedule, String phone, String email, String address, String[] product) {
+        this.identification = identification;
+        this.name = name;
+        this.password = password;
+        this.category = category;
+        this.schedule = schedule;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.product = product;
     }
 
     @Override
     public String toString() {
         return "Store{" +
                 "id='" + id + '\'' +
-                ", identificacion='" + identificacion + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", contrasena='" + contrasena + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", horario=" + Arrays.toString(horario) +
-                ", telefono='" + telefono + '\'' +
-                ", correo='" + correo + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", producto=" + Arrays.toString(producto) +
+                ", identification='" + identification + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", category='" + category + '\'' +
+                ", schedule=" + Arrays.toString(schedule) +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", product=" + Arrays.toString(product) +
                 '}';
     }
 

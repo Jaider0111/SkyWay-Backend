@@ -19,26 +19,26 @@ public class CustomStoreDetailsService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public String autheticateStore (String email, String password){
-        Store store= StoreRepository.findStoreByCorreo(email);
+        Store store= StoreRepository.findStoreByEmail(email);
         if(store== null) return "incorrect email";
-        return (bCryptPasswordEncoder.matches(password, store.getContrasena()))?
+        return (bCryptPasswordEncoder.matches(password, store.getPassword()))?
                 "success": "failed";
     }
 
-    public Store findStoreByIdentificacion(String identificacion) {
-        return StoreRepository.findStoreByIdentificacion(identificacion);
+    public Store findStoreByIdentificacion(String identification) {
+        return StoreRepository.findStoreByIdentification(identification);
     }
 
     public Store findStoreByEmail(String correo) {
-        return StoreRepository.findStoreByCorreo(correo);
+        return StoreRepository.findStoreByEmail(correo);
     }
 
     public Store saveStore(Store store) {
-        store.setContrasena(bCryptPasswordEncoder.encode(store.getContrasena()));
+        store.setPassword(bCryptPasswordEncoder.encode(store.getPassword()));
         return StoreRepository.save(store);
     }
     public  Store deleteStoreByEmail(String store){
-        return StoreRepository.deleteStoreByCorreo(store);
+        return StoreRepository.deleteStoreByEmail(store);
     }
 
 

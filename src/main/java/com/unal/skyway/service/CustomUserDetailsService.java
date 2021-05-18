@@ -27,27 +27,27 @@ public class CustomUserDetailsService {
     public String autheticateUser (String email, String password){
         User user= findUserByEmail(email);
         if(user== null) return "incorrect email";
-        return (bCryptPasswordEncoder.matches(password, user.getContrasena()))?
+        return (bCryptPasswordEncoder.matches(password, user.getPassword()))?
                 "success": "failed";
     }
 
     public User findUserByEmail(String correo) {
-        return UserRepository.findByCorreo(correo);
+        return UserRepository.findUserByEmail(correo);
     }
 
-    public User findUserByIdentificacion(String identificacion) {
-        return UserRepository.findUserByIdentificacion(identificacion);
+    public User findUserByIdentification(String identification) {
+        return UserRepository.findUserByIdentification(identification);
     }
 
     public User saveUser(User user) {
-        user.setContrasena(bCryptPasswordEncoder.encode(user.getContrasena()));
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         Role userRole = roleRepository.findByRole("ADMIN");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
 
         return UserRepository.save(user);
     }
-    public  User deleteUserByEmail(String correo){
-        return UserRepository.deleteUserByCorreo(correo);
+    public  User deleteUserByEmail(String email){
+        return UserRepository.deleteUserByEmail(email);
     }
     /*
     @Override
@@ -73,6 +73,6 @@ public class CustomUserDetailsService {
 
      */
     private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
-        return new org.springframework.security.core.userdetails.User(user.getCorreo(), user.getContrasena(), authorities);
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 }
