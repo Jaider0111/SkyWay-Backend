@@ -1,8 +1,10 @@
 package com.unal.skyway.service;
 
 import com.unal.skyway.models.Role;
+import com.unal.skyway.models.Store;
 import com.unal.skyway.models.User;
 import com.unal.skyway.repository.RoleRepository;
+import com.unal.skyway.repository.StoreRepository;
 import com.unal.skyway.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,17 +25,30 @@ public class CustomUserDetailsService {
     private RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private StoreRepository StoreRepository;
 
     public String autheticate(String email, String password){
         User user= findUserByEmail(email);
-        if(user== null) return "incorrect email";
-        return (bCryptPasswordEncoder.matches(password, user.getContrasena()))?
-                "success": "failed";
+        Store store = findStoreByEmail(email);
+        if(user== null && store== null) return "incorrect email";
+        else{
+            if(bCryptPasswordEncoder.matches(password, user.getContrasena())){
+                return "Usuario";
+            }
+            if (bCryptPasswordEncoder.matches(password, store.getPassword())){
+                return "Tienda";
+            }
+            return "failed";
+        }
+
     }
 
     public User findUserByEmail(String correo) {
         return UserRepository.findByCorreo(correo);
     }
+
+    public Store findStoreByEmail(String correo){return StoreRepository.findByEmail(correo);}
 
     public User saveUser(User user) {
         user.setContrasena(bCryptPasswordEncoder.encode(user.getContrasena()));

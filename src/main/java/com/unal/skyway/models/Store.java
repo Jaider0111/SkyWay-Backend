@@ -1,65 +1,133 @@
 package com.unal.skyway.models;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
+
+import java.util.Arrays;
 
 
 public class Store {
 
     @Id
-    public String nit;
+    public String id;
+    public String identification;
+    public String name;
+    public String password;
+    public String category;
+    public String[] schedule;
+    public String phone;
+    public String email;
+    public String address;
+    public String[] product;
 
-    public String nombre;
-    public String categoria;
-    public String horario;
-    public int costo_domicilio;
-    public String direccion;
-    public String[] producto;
+    public String getId() {
+        return id;
+    }
 
-    public String getNit() { return nit;}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public void setNit(String nit) {this.nit = nit;}
+    public String getIdentification() {
+        return identification;
+    }
 
-    public String getNombre() {return nombre;}
+    public void setIdentification(String identification) {
+        this.identification = identification;
+    }
 
-    public void setNombre(String nombre) {this.nombre = nombre;}
+    public String getName() {
+        return name;
+    }
 
-    public String getCategoria() {return categoria;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setCategoria(String categoria) {this.categoria = categoria;}
+    public String getPassword() {
+        return password;
+    }
 
-    public String getHorario() {return horario;}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-    public void setHorario(String horario) {this.horario = horario;}
+    public String getCategory() {
+        return category;
+    }
 
-    public int getCosto_domicilio() {return costo_domicilio;}
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-    public void setCosto_domicilio(int costo_domicilio) {this.costo_domicilio = costo_domicilio;}
+    public String[] getSchedule() {
+        return schedule;
+    }
 
-    public String getDireccion() {return direccion;}
+    public void setSchedule(String[] schedule) {
+        this.schedule = schedule;
+    }
 
-    public void setDireccion(String direccion) {this.direccion = direccion;}
+    public String getPhone() {
+        return phone;
+    }
 
-    public String[] getProducto() {return producto;}
-    public void setProducto(String[] producto) {this.producto = producto;}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String[] getProduct() {
+        return product;
+    }
+
+    public void setProduct(String[] product) {
+        this.product = product;
+    }
 
     public Store() {}
 
-    public Store(String nombre, String categoria, String horario, int costo_domicilio, String direccion, String[] producto) {
-        this.nombre = nombre;
-        this.categoria = categoria;
-        this.horario = horario;
-        this.costo_domicilio = costo_domicilio;
-        this.direccion = direccion;
-        this.producto = producto;
-
+    public Store(String identification, String name, String password, String category, String[] schedule, String phone, String email, String address, String[] product) {
+        this.identification = identification;
+        this.name = name;
+        this.password = password;
+        this.category = category;
+        this.schedule = schedule;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.product = product;
     }
 
     @Override
     public String toString() {
-        return String.format(
-                "Tienda[id=%s, nombre='%s', categoria='%s', horario='%s', costo_domicilio='%s', direccion='%s', producto='%s']",
-                nit,nombre, categoria, horario, costo_domicilio, direccion, producto);
-
+        return "Store{" +
+                "id='" + id + '\'' +
+                ", identification='" + identification + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", category='" + category + '\'' +
+                ", schedule=" + Arrays.toString(schedule) +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", product=" + Arrays.toString(product) +
+                '}';
     }
 
 }
