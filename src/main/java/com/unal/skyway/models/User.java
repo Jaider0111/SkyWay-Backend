@@ -33,13 +33,14 @@ public class User {
 
     public void setRoles(Set<Role> roles) { this.roles = roles;}
 
-    public String getId() {
-        return id;
-    }
+    public String getId() { return id; }
 
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getIdentificacion() { return identificacion; }
+
 
     public String getNombres() {
         return nombres;

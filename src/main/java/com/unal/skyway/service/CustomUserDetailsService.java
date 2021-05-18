@@ -24,7 +24,7 @@ public class CustomUserDetailsService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public String autheticate(String email, String password){
+    public String autheticateUser (String email, String password){
         User user= findUserByEmail(email);
         if(user== null) return "incorrect email";
         return (bCryptPasswordEncoder.matches(password, user.getContrasena()))?
@@ -33,6 +33,10 @@ public class CustomUserDetailsService {
 
     public User findUserByEmail(String correo) {
         return UserRepository.findByCorreo(correo);
+    }
+
+    public User findUserByIdentificacion(String identificacion) {
+        return UserRepository.findUserByIdentificacion(identificacion);
     }
 
     public User saveUser(User user) {

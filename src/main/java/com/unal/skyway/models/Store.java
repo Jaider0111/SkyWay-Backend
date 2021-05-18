@@ -1,65 +1,133 @@
 package com.unal.skyway.models;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
+
+import java.util.Arrays;
 
 
 public class Store {
 
     @Id
-    public String nit;
-
+    public String id;
+    public String identificacion;
     public String nombre;
+    public String contrasena;
     public String categoria;
-    public String horario;
-    public int costo_domicilio;
+    public String[] horario;
+    public String telefono;
+    public String correo;
     public String direccion;
     public String[] producto;
 
-    public String getNit() { return nit;}
+    public String getId() {
+        return id;
+    }
 
-    public void setNit(String nit) {this.nit = nit;}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getNombre() {return nombre;}
+    public String getIdentificacion() {
+        return identificacion;
+    }
 
-    public void setNombre(String nombre) {this.nombre = nombre;}
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
 
-    public String getCategoria() {return categoria;}
+    public String getNombre() {
+        return nombre;
+    }
 
-    public void setCategoria(String categoria) {this.categoria = categoria;}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public String getHorario() {return horario;}
+    public String getContrasena() {
+        return contrasena;
+    }
 
-    public void setHorario(String horario) {this.horario = horario;}
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
 
-    public int getCosto_domicilio() {return costo_domicilio;}
+    public String getCategoria() {
+        return categoria;
+    }
 
-    public void setCosto_domicilio(int costo_domicilio) {this.costo_domicilio = costo_domicilio;}
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
-    public String getDireccion() {return direccion;}
+    public String[] getHorario() {
+        return horario;
+    }
 
-    public void setDireccion(String direccion) {this.direccion = direccion;}
+    public void setHorario(String[] horario) {
+        this.horario = horario;
+    }
 
-    public String[] getProducto() {return producto;}
-    public void setProducto(String[] producto) {this.producto = producto;}
+    public String getTelefono() {
+        return telefono;
+    }
 
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String[] getProducto() {
+        return producto;
+    }
+
+    public void setProducto(String[] producto) {
+        this.producto = producto;
+    }
 
     public Store() {}
 
-    public Store(String nombre, String categoria, String horario, int costo_domicilio, String direccion, String[] producto) {
+    public Store(String identificacion, String nombre, String contrasena, String categoria, String[] horario, String telefono, String correo, String direccion, String[] producto) {
+        this.identificacion = identificacion;
         this.nombre = nombre;
+        this.contrasena = contrasena;
         this.categoria = categoria;
         this.horario = horario;
-        this.costo_domicilio = costo_domicilio;
+        this.telefono = telefono;
+        this.correo = correo;
         this.direccion = direccion;
         this.producto = producto;
-
     }
 
     @Override
     public String toString() {
-        return String.format(
-                "Tienda[id=%s, nombre='%s', categoria='%s', horario='%s', costo_domicilio='%s', direccion='%s', producto='%s']",
-                nit,nombre, categoria, horario, costo_domicilio, direccion, producto);
-
+        return "Store{" +
+                "id='" + id + '\'' +
+                ", identificacion='" + identificacion + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", contrasena='" + contrasena + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", horario=" + Arrays.toString(horario) +
+                ", telefono='" + telefono + '\'' +
+                ", correo='" + correo + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", producto=" + Arrays.toString(producto) +
+                '}';
     }
 
 }
