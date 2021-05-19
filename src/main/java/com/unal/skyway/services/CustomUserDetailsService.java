@@ -29,15 +29,14 @@ public class CustomUserDetailsService {
         User user= findUserByEmail(email);
         Store store = findStoreByEmail(email);
         if(user== null && store== null) return "incorrect email";
-        else{
-            if(bCryptPasswordEncoder.matches(password, user.getPassword())){
+        else if(user != null) {
+            if (bCryptPasswordEncoder.matches(password, user.getPassword()))
                 return "Usuario";
-            }
-            if (bCryptPasswordEncoder.matches(password, store.getPassword())){
+        }else{
+            if (bCryptPasswordEncoder.matches(password, store.getPassword()))
                 return "Tienda";
-            }
-            return "failed";
         }
+        return "failed";
     }
 
     public User findUserByEmail(String correo) {
