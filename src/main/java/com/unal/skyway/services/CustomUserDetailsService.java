@@ -1,17 +1,14 @@
-package com.unal.skyway.service;
+package com.unal.skyway.services;
 
 import com.unal.skyway.models.Role;
 import com.unal.skyway.models.Store;
 import com.unal.skyway.models.User;
-import com.unal.skyway.repository.RoleRepository;
-import com.unal.skyway.repository.StoreRepository;
-import com.unal.skyway.repository.UserRepository;
+import com.unal.skyway.repositories.RoleRepository;
+import com.unal.skyway.repositories.StoreRepository;
+import com.unal.skyway.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +30,7 @@ public class CustomUserDetailsService {
         Store store = findStoreByEmail(email);
         if(user== null && store== null) return "incorrect email";
         else{
-            if(bCryptPasswordEncoder.matches(password, user.getContrasena())){
+            if(bCryptPasswordEncoder.matches(password, user.getPassword())){
                 return "Usuario";
             }
             if (bCryptPasswordEncoder.matches(password, store.getPassword())){
@@ -51,7 +48,7 @@ public class CustomUserDetailsService {
         return UserRepository.findUserByIdentification(identification);
     }
 
-    public Store findStoreByEmail(String correo){return StoreRepository.findByEmail(correo);}
+    public Store findStoreByEmail(String correo){return StoreRepository.findStoreByEmail(correo);}
 
     public User saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));

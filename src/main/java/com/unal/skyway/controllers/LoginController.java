@@ -1,14 +1,13 @@
-package com.unal.skyway.controller;
+package com.unal.skyway.controllers;
 
 import com.unal.skyway.models.User;
 import com.unal.skyway.models.Store;
-import com.unal.skyway.service.CustomUserDetailsService;
-import com.unal.skyway.service.CustomStoreDetailsService;
+import com.unal.skyway.services.CustomUserDetailsService;
+import com.unal.skyway.services.CustomStoreDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import org.springframework.web.bind.annotation.*;
-import java.sql.SQLOutput;
 
 @RestController
 

@@ -1,15 +1,11 @@
-package com.unal.skyway.service;
+package com.unal.skyway.services;
 
 import com.unal.skyway.models.Store;
-import com.unal.skyway.models.User;
-import com.unal.skyway.repository.StoreRepository;
+import com.unal.skyway.repositories.StoreRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.*;
 
 @Service
 public class CustomStoreDetailsService {

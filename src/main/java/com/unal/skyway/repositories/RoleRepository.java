@@ -1,4 +1,4 @@
-package com.unal.skyway.repository;
+package com.unal.skyway.repositories;
 
 import com.unal.skyway.models.*;
 import org.springframework.data.mongodb.repository.MongoRepository;
