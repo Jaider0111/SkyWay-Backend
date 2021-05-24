@@ -5,9 +5,13 @@ import com.unal.skyway.models.Store;
 import com.unal.skyway.services.CustomUserDetailsService;
 import com.unal.skyway.services.CustomStoreDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
+import java.util.Map;
 
 @RestController
 
@@ -24,10 +28,22 @@ public class LoginController {
 
 
     @GetMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password){
-        String autenticado = serviceUser.autheticateUser(email, password);
-        return autenticado;
+    public ResponseEntity<Object> login(@RequestParam String email, @RequestParam String password){
+        Map<String, Object> autenticado = serviceUser.autheticateUser(email, password);
+        if(((String) autenticado.get("status")).equals("Usuario")){
+           return ResponseEntity.ok()
+                   .header("StatusLogin", "Usuario")
+                   .body((User) autenticado.get("body"));
+        }else if(((String) autenticado.get("status")).equals("Tienda")){
+            return ResponseEntity.ok()
+                    .header("StatusLogin", "Tienda")
+                    .body((Store) autenticado.get("body"));
+        }
+        return ResponseEntity.ok()
+                .header("StatusLogin", (String) autenticado.get("status"))
+                .body(null);
     }
+
     @PostMapping("/registration/user")
     public String registrationUser (@RequestBody User user){
         if ( serviceUser.findUserByIdentification ( user.getIdentification() ) != null ){
@@ -54,6 +70,7 @@ public class LoginController {
         if ( serviceStore.findStoreByEmail ( store.getEmail()) != null ){
             return "El correo ya se encuentra registrado" ;
         }
+        store.setProduct(Collections.emptySet());
         Store store1 = serviceStore.saveStore(store);
         return store1.name;
     }

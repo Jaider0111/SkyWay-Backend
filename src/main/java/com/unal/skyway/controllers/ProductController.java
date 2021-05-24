@@ -2,6 +2,7 @@ package com.unal.skyway.controllers;
 
 import com.unal.skyway.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.unal.skyway.models.Product;
@@ -17,6 +18,14 @@ public class ProductController {
     public String create(@RequestBody Product product) {
         Product p = productService.create(product);
         return p.getId();
+    }
+
+    @GetMapping("/api/products")
+    public ResponseEntity<Product> getProduct(@RequestParam String id) {
+        Product p = productService.getProductById(id);
+        return ResponseEntity.ok()
+                .header("StatusFind", (p == null) ? "failed" : "success")
+                .body(p);
     }
 
 }

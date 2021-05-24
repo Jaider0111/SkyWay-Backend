@@ -2,8 +2,11 @@ package com.unal.skyway.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Set;
 
 
 public class Store {
@@ -18,7 +21,8 @@ public class Store {
     public String phone;
     public String email;
     public String address;
-    public String[] product;
+    @DBRef
+    public Set<Product> product;
 
     public String getId() {
         return id;
@@ -92,17 +96,17 @@ public class Store {
         this.address = address;
     }
 
-    public String[] getProduct() {
+    public Set<Product> getProduct() {
         return product;
     }
 
-    public void setProduct(String[] product) {
+    public void setProduct(Set<Product> product) {
         this.product = product;
     }
 
     public Store() {}
 
-    public Store(String identification, String name, String password, String category, String[] schedule, String phone, String email, String address, String[] product) {
+    public Store(String identification, String name, String password, String category, String[] schedule, String phone, String email, String address, Set<Product> product) {
         this.identification = identification;
         this.name = name;
         this.password = password;
@@ -126,7 +130,7 @@ public class Store {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
-                ", product=" + Arrays.toString(product) +
+                ", product=" + product.toString() +
                 '}';
     }
 

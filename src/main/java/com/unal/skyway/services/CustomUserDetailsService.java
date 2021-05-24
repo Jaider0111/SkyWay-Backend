@@ -25,18 +25,31 @@ public class CustomUserDetailsService {
     @Autowired
     private StoreRepository StoreRepository;
 
-    public String autheticateUser (String email, String password){
+    public Map<String, Object> autheticateUser (String email, String password){
         User user= findUserByEmail(email);
         Store store = findStoreByEmail(email);
-        if(user== null && store== null) return "incorrect email";
-        else if(user != null) {
-            if (bCryptPasswordEncoder.matches(password, user.getPassword()))
-                return "Usuario";
-        }else{
-            if (bCryptPasswordEncoder.matches(password, store.getPassword()))
-                return "Tienda";
+        Map<String, Object> ans = new HashMap<>();
+        if(user== null && store== null){
+            ans.put("status", "incorrect email");
+            return ans;
         }
-        return "failed";
+        else if(user != null) {
+            if (bCryptPasswordEncoder.matches(password, user.getPassword())){
+                ans.put("status", "Usuario");
+                ans.put("body", user);
+                //user.toJson().forEach(ans::put);
+                return ans;
+            }
+        }else{
+            if (bCryptPasswordEncoder.matches(password, store.getPassword())){
+                ans.put("status", "Tienda");
+                ans.put("body", store);
+                //store.toJson().forEach(ans::put);
+                return ans;
+            }
+        }
+        ans.put("status", "failed");
+        return ans;
     }
 
     public User findUserByEmail(String correo) {
