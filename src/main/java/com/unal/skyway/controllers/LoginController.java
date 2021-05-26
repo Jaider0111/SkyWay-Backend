@@ -5,6 +5,8 @@ import com.unal.skyway.models.Store;
 import com.unal.skyway.services.CustomUserDetailsService;
 import com.unal.skyway.services.CustomStoreDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -28,20 +30,10 @@ public class LoginController {
 
 
     @GetMapping("/login")
-    public ResponseEntity<Object> login(@RequestParam String email, @RequestParam String password){
+    public ResponseEntity<Map<String, Object>> login(@RequestParam String email, @RequestParam String password){
         Map<String, Object> autenticado = serviceUser.autheticateUser(email, password);
-        if(((String) autenticado.get("status")).equals("Usuario")){
-           return ResponseEntity.ok()
-                   .header("StatusLogin", "Usuario")
-                   .body((User) autenticado.get("body"));
-        }else if(((String) autenticado.get("status")).equals("Tienda")){
-            return ResponseEntity.ok()
-                    .header("StatusLogin", "Tienda")
-                    .body((Store) autenticado.get("body"));
-        }
         return ResponseEntity.ok()
-                .header("StatusLogin", (String) autenticado.get("status"))
-                .body(null);
+                .body(autenticado);
     }
 
     @PostMapping("/registration/user")

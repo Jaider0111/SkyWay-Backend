@@ -24,12 +24,12 @@ const RESOURCES = {
 "assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "00bb2b684be61e89d1bc7d75dee30b58",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "4b6a9b7c20913279a3ad3dd9c96e155b",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "dffd9504fcb1894620fa41c700172994",
-"favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"favicon.png": "520d34bcf694ac66a14c7252af16c2dd",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index.html": "feb950e7af7b6bf25bacd1f8797a25b1",
-"/": "feb950e7af7b6bf25bacd1f8797a25b1",
-"main.dart.js": "91b459ea04fc6bc9562554be7afd83e3",
+"index.html": "19afb7d2d05b8036038fc29b9f448f64",
+"/": "19afb7d2d05b8036038fc29b9f448f64",
+"main.dart.js": "464b458263b8adfdd3858c0cb1580419",
 "manifest.json": "11f0001a5434417004e393ef72920ecc",
 "version.json": "6fe16395189bb09502d44fc18e122c77"
 };

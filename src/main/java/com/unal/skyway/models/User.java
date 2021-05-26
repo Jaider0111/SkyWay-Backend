@@ -23,6 +23,16 @@ public class User {
     public String email;
     public String password;
     public String phone;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String image;
     @DBRef
     public Set<Role> roles;
 
