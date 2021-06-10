@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import com.unal.skyway.models.Product;
 
-@RestController
+import java.util.List;
+
+@RestController("/api/products")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
 public class ProductController {
 
@@ -28,4 +30,13 @@ public class ProductController {
                 .body(p);
     }
 
+    @GetMapping("/api/products/ids")
+    public List<String> getProducts(){
+        return productService.getProductIds();
+    }
+
+    @GetMapping("/api/products/name")
+    public List<String> getProductsByNameRegex(@RequestParam String     regex){
+        return productService.getProductsByNameMach(regex);
+    }
 }

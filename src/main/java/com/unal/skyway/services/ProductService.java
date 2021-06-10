@@ -5,6 +5,9 @@ import com.unal.skyway.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ProductService {
     @Autowired
@@ -19,4 +22,19 @@ public class ProductService {
     }
 
     public Product getProductById(String id) {return productRepository.findProductById(id);}
+
+    public List<String> getProductIds() {
+        List<Product> products = productRepository.findId();
+        return products.stream().map(Product::getId).collect(Collectors.toList());
+    }
+
+    public List<String> getProductsByNameMach(String regex){
+        String name = "";
+        for(char i : regex.toCharArray()){
+            name += ".*" + i;
+        }
+        name += ".*";
+        List<Product> products = productRepository.findIdByNameMatchesRegex(name);
+        return products.stream().map(Product::getId).collect(Collectors.toList());
+    }
 }
