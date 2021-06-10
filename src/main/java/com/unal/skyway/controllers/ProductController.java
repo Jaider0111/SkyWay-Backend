@@ -33,7 +33,7 @@ public class ProductController {
     }
 
     @GetMapping("/api/products/ids")
-    public List<String> getProducts(){
+    public List<String> getProductsIds(){
         return productService.getProductIds();
     }
 
