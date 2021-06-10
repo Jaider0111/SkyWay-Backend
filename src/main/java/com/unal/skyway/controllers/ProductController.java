@@ -1,5 +1,6 @@
 package com.unal.skyway.controllers;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import com.unal.skyway.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,8 @@ import com.unal.skyway.models.Product;
 
 import java.util.List;
 
-@RestController("/api/products")
+
+@RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
 public class ProductController {
 
@@ -38,5 +40,11 @@ public class ProductController {
     @GetMapping("/api/products/name")
     public List<String> getProductsByNameRegex(@RequestParam String     regex){
         return productService.getProductsByNameMach(regex);
+    }
+  
+    @GetMapping("/api/getProducts")
+    public List<Product> getProducts()
+    {
+        return productService.getProducts();
     }
 }

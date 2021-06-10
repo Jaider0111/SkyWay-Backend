@@ -15,5 +15,4 @@ public interface ProductRepository extends MongoRepository<Product, String> {
     @Query(value="{name: RegExp(?0, 'i')}", fields="{_id : 1}")
     List<Product> findIdByNameMatchesRegex(String regex);
 
-
 }

@@ -37,4 +37,6 @@ public class ProductService {
         List<Product> products = productRepository.findIdByNameMatchesRegex(name);
         return products.stream().map(Product::getId).collect(Collectors.toList());
     }
+
+    public List<Product> getProducts() {return productRepository.findAll();}
 }
