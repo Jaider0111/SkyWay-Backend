@@ -23,8 +23,8 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public List<Order> getAll() {
+    public List<Order> getAllPaid(String businessId) {
         // return orderRepository.findAll(Sort.by(Sort.Direction.DESC, "date"));
-        return orderRepository.findAllByStatus("paid");
+        return orderRepository.findOrdersByStatusAndBusinessId("paid", businessId);
     }
 }

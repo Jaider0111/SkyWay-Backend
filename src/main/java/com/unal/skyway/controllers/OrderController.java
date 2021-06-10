@@ -28,8 +28,8 @@ public class OrderController {
     }
 
     @GetMapping("/api/orders/get")
-    public List<Order> getAll() {
-        List<Order> orders = orderService.getAll();
+    public List<Order> getAllPaid(String businessId) {
+        List<Order> orders = orderService.getAllPaid(businessId);
         return orders;
     }
 }
