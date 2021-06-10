@@ -10,6 +10,7 @@ import com.unal.skyway.models.Product;
 
 import java.util.List;
 
+
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
 public class ProductController {
@@ -31,10 +32,19 @@ public class ProductController {
                 .body(p);
     }
 
+    @GetMapping("/api/products/ids")
+    public List<String> getProducts(){
+        return productService.getProductIds();
+    }
+
+    @GetMapping("/api/products/name")
+    public List<String> getProductsByNameRegex(@RequestParam String     regex){
+        return productService.getProductsByNameMach(regex);
+    }
+  
     @GetMapping("/api/getProducts")
     public List<Product> getProducts()
     {
         return productService.getProducts();
     }
-
 }

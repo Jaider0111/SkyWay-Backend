@@ -23,6 +23,9 @@ public class User {
     public String email;
     public String password;
     public String phone;
+    public String image;
+    @DBRef
+    public Set<Role> roles;
 
     public String getImage() {
         return image;
@@ -31,10 +34,6 @@ public class User {
     public void setImage(String image) {
         this.image = image;
     }
-
-    public String image;
-    @DBRef
-    public Set<Role> roles;
 
     public Set<Role> getRoles() {return roles;}
 
