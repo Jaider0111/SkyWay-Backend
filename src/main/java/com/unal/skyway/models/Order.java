@@ -3,6 +3,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
+import java.util.Arrays;
 import java.util.List;
 @Document(collection="orders")
 public class Order {
@@ -20,6 +21,27 @@ public class Order {
     private int pay;
     private List<Product> order;
     private int price;
+
+    @Override
+    public String toString(){
+        return "Order{"+
+                "orderId='" + orderId + '\''+
+                "name='" + name + '\''+
+                "address='" + address + '\''+
+                "floorApto='" + floorApto + '\''+
+                "bonus='" + bonus + '\''+
+                "withCreditCard='" + creditCard + '\''+
+                "creditCardNumber='" + creditCardNumber + '\''+
+                "cvv='" + cvv + '\''+
+                "month='" + month + '\''+
+                "year='" + year + '\''+
+                "pay='" + pay + '\''+
+                "order='" + order.toString() + '\''+
+                "price='" + price + '\''+
+                '}';
+
+
+    }
 
     public Order(){}
 
@@ -149,4 +171,6 @@ public class Order {
     public void setPrice(int price) {
         this.price = price;
     }
+
+
 }
