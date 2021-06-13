@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.Map;
 
 @Document(collection = "orders")
 public class Order {
@@ -12,7 +13,7 @@ public class Order {
     private String id;
 
     private String status;
-    private String[] products;
+    private Map<String, Integer> products;
     private Float total;
     private Date date;
 
@@ -23,7 +24,7 @@ public class Order {
 
     }
 
-    public Order(String status, String[] products, Float total, Date date,
+    public Order(String status, Map<String, Integer> products, Float total, Date date,
                  String consumerId, String businessId) {
 
         this.status = status;
@@ -40,8 +41,8 @@ public class Order {
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 
-    public String[] getProducts() { return products; }
-    public void setProducts(String[] products) { this.products = products; }
+    public Map<String, Integer> getProducts() { return products; }
+    public void setProducts(Map<String, Integer> products) { this.products = products; }
 
     public Float getTotal() { return total; }
     public void setTotal(Float total) { this.total = total; }

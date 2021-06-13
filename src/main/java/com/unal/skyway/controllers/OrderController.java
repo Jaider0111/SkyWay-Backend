@@ -22,7 +22,7 @@ public class OrderController {
         return o.getId();
     }
 
-    @PostMapping("/api/orders/update")
+    @PutMapping("/api/orders/update")
     public String setStatus(@RequestBody Order order) {
         Order o = orderService.setStatus(order);
         return o.getId();
