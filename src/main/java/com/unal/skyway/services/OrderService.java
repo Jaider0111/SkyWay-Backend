@@ -1,6 +1,7 @@
 package com.unal.skyway.services;
 
 import com.unal.skyway.models.Order;
+import com.unal.skyway.models.Store;
 import com.unal.skyway.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -17,9 +18,9 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public Order setStatus(String id, String status) {
-        Order order = orderRepository.findOrderById(id);
-        order.setStatus(status);
+    public Order setStatus(Order o) {
+        Order order = orderRepository.findOrderById(o.getId());
+        order.setStatus(o.getStatus());
         return orderRepository.save(order);
     }
 

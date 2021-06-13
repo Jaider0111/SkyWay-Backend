@@ -1,6 +1,7 @@
 package com.unal.skyway.controllers;
 
 import com.unal.skyway.models.Order;
+import com.unal.skyway.models.Store;
 import com.unal.skyway.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,13 +23,13 @@ public class OrderController {
     }
 
     @PostMapping("/api/orders/update")
-    public String setStatus(String id, String status) {
-        Order o = orderService.setStatus(id, status);
+    public String setStatus(@RequestBody Order order) {
+        Order o = orderService.setStatus(order);
         return o.getId();
     }
 
     @GetMapping("/api/orders/get")
-    public List<Order> getAllPaid(String businessId) {
+    public List<Order> getAllPaid(@RequestParam String businessId) {
         List<Order> orders = orderService.getAllPaid(businessId);
         return orders;
     }
