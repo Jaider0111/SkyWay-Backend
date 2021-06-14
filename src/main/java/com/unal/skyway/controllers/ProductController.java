@@ -33,13 +33,20 @@ public class ProductController {
     }
 
     @GetMapping("/api/products/ids")
-    public List<String> getProducts(){
+    public List<String> getProductsIds(){
         return productService.getProductIds();
     }
 
     @GetMapping("/api/products/name")
-    public List<String> getProductsByNameRegex(@RequestParam String     regex){
+    public List<String> getProductsByNameRegex(@RequestParam String regex){
         return productService.getProductsByNameMach(regex);
+    }
+
+    @GetMapping("/api/products/category")
+    public List<String> getProductsByCatOrSubcat(@RequestParam String category, @RequestParam String subcategory){
+        System.out.println(category);
+        System.out.println(subcategory);
+        return productService.getProductsByCatOrSubcat(category, subcategory);
     }
   
     @GetMapping("/api/getProducts")
