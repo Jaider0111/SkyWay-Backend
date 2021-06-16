@@ -1,23 +1,26 @@
 package com.unal.skyway.controllers;
 
-import com.unal.skyway.services.CustomUserDetailsService;
+import com.unal.skyway.models.Store;
+import com.unal.skyway.models.User;
+import com.unal.skyway.services.CustomStoreDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.unal.skyway.models.User;
+import java.util.HashSet;
 
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
-public class ConsumerController {
+public class StoreController {
     @Autowired
-    private CustomUserDetailsService userService;
+    private CustomStoreDetailsService storeService;
 
-    @GetMapping("/api/consumers/get")
-    public ResponseEntity<User> getUser(@RequestParam String id) {
-        User u = userService.getUserById(id);
+    @GetMapping("api/stores/get")
+    public ResponseEntity<Store> getStore(@RequestParam String id) {
+        Store u = storeService.getStoreById(id);
         u.setPassword("");
         u.setIdentification("");
+        u.setProduct(new HashSet<>());
         return ResponseEntity.ok()
                 .header("StatusFind", (u == null) ? "failed" : "success")
                 .body(u);

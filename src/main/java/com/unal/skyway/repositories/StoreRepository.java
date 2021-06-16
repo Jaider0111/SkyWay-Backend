@@ -9,4 +9,6 @@ public interface StoreRepository extends MongoRepository<Store, String> {
     Store findStoreByEmail(String email);
     Store findStoreByIdentification(String identificaction);
     Store deleteStoreByEmail(String email);
+
+    Store findStoreById(String id);
 }

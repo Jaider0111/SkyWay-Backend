@@ -1,6 +1,7 @@
 package com.unal.skyway.services;
 
 import com.unal.skyway.models.Store;
+import com.unal.skyway.models.User;
 import com.unal.skyway.repositories.StoreRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,5 @@ public class CustomStoreDetailsService {
         return StoreRepository.deleteStoreByEmail(store);
     }
 
-
+    public Store getStoreById(String id) {return StoreRepository.findStoreById(id);}
 }
