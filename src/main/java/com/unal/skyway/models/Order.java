@@ -3,12 +3,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+
 @Document(collection="orders")
 public class Order {
     @Id
-    private String orderId;
+    private String id;
     private String name;
     private String address;
     private String floorApto;
@@ -19,13 +20,18 @@ public class Order {
     private int month;
     private int year;
     private int pay;
-    private List<Product> order;
+    private Map<String, Integer> products;
     private int price;
+    private String status;
+
+    private String consumerId;
+    private String businessId;
+
 
     @Override
     public String toString(){
         return "Order{"+
-                "orderId='" + orderId + '\''+
+                "orderId='" + id + '\''+
                 "name='" + name + '\''+
                 "address='" + address + '\''+
                 "floorApto='" + floorApto + '\''+
@@ -36,17 +42,16 @@ public class Order {
                 "month='" + month + '\''+
                 "year='" + year + '\''+
                 "pay='" + pay + '\''+
-                "order='" + order.toString() + '\''+
+                "products='" + products.toString() + '\''+
                 "price='" + price + '\''+
                 '}';
 
 
     }
 
-    public Order(){}
+    public Order(String id, String name, String address, String floorApto, int bonus, boolean creditCard, String creditCardNumber, int cvv, int month, int year, int pay, Map<String, Integer> products, int price, String status, String consumerId, String businessId) {
 
-    public Order(String orderId, String name, String address, String floorApto, int bonus, boolean creditCard, String creditCardNumber, int cvv, int month, int year, List<Product> order, int price) {
-        this.orderId = orderId;
+        this.id = id;
         this.name = name;
         this.address = address;
         this.floorApto = floorApto;
@@ -56,24 +61,24 @@ public class Order {
         this.cvv = cvv;
         this.month = month;
         this.year = year;
-        this.order = order;
-        this.price = price;
-    }
-
-    public Order(String orderId, String name, String address, String floorApto, int bonus, boolean creditCard, int pay, List<Product> order, int price) {
-        this.orderId = orderId;
-        this.name = name;
-        this.address = address;
-        this.floorApto = floorApto;
-        this.bonus = bonus;
-        this.creditCard = creditCard;
         this.pay = pay;
-        this.order = order;
+        this.products = products;
         this.price = price;
+        this.status = status;
+        this.consumerId = consumerId;
+        this.businessId = businessId;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public Order(){
+        super();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -156,12 +161,12 @@ public class Order {
         this.pay = pay;
     }
 
-    public List<Product> getOrder() {
-        return order;
+    public Map<String, Integer> getProducts() {
+        return products;
     }
 
-    public void setOrder(List<Product> order) {
-        this.order = order;
+    public void setProducts(Map<String, Integer> products) {
+        this.products = products;
     }
 
     public int getPrice() {
@@ -172,5 +177,27 @@ public class Order {
         this.price = price;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getConsumerId() {
+        return consumerId;
+    }
+
+    public void setConsumerId(String consumerId) {
+        this.consumerId = consumerId;
+    }
+
+    public String getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
+    }
 }
