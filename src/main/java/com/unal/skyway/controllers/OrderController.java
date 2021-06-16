@@ -29,8 +29,12 @@ public class OrderController {
     }
 
     @GetMapping("/api/orders/get")
-    public List<Order> getAllPaid(@RequestParam String businessId) {
-        List<Order> orders = orderService.getAllPaid(businessId);
+    public List<Order> getAllPaid(@RequestParam String businessId, @RequestParam String consumerId) {
+        List<Order> orders;
+        if (!businessId.equals(""))
+            orders = orderService.getAllPaid(businessId);
+        else
+            orders = orderService.getOrdersByUser(consumerId);
         return orders;
     }
 }

@@ -9,4 +9,5 @@ public interface OrderRepository extends MongoRepository<Order, String> {
 
     Order findOrderById(String id);
     List<Order> findOrdersByStatusAndBusinessId(String status, String businessId);
+    List<Order> findOrdersByConsumerId(String consumerId);
 }

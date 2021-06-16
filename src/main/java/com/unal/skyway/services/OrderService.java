@@ -28,4 +28,8 @@ public class OrderService {
         // return orderRepository.findAll(Sort.by(Sort.Direction.DESC, "date"));
         return orderRepository.findOrdersByStatusAndBusinessId("paid", businessId);
     }
+
+    public List<Order> getOrdersByUser(String consumerId) {
+        return orderRepository.findOrdersByConsumerId(consumerId);
+    }
 }
