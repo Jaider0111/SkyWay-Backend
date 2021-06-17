@@ -17,10 +17,14 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/api/orders/create")
-    public String create(@RequestBody Order order) {
-        Order o = orderService.create(order);
-        return o.getId();
+    public String create(@RequestBody Order order){
+        if(orderService.getOrderById(order.getId())!=null){
+            return "El pedido no se ha generado correctamente";
+        }
+        Order order1 = orderService.create(order);
+        return order1.getId();
     }
+
 
     @PutMapping("/api/orders/update")
     public String setStatus(@RequestBody Order order) {

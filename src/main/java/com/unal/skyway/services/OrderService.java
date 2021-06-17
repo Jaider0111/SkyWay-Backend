@@ -14,9 +14,13 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public Order create(Order order) {
+    public Order create(Order order){
         return orderRepository.save(order);
     }
+
+    public Order getOrderById(String orderId){
+        return orderRepository.findOrderById(orderId);
+
 
     public Order setStatus(Order o) {
         Order order = orderRepository.findOrderById(o.getId());
