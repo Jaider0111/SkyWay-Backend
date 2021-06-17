@@ -3,7 +3,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-import java.util.List;
 import java.util.Map;
 
 @Document(collection="orders")
@@ -21,7 +20,7 @@ public class Order {
     private int year;
     private int pay;
     private Map<String, Integer> products;
-    private int price;
+    private int total;
     private String status;
 
     private String consumerId;
@@ -43,13 +42,13 @@ public class Order {
                 "year='" + year + '\''+
                 "pay='" + pay + '\''+
                 "products='" + products.toString() + '\''+
-                "price='" + price + '\''+
+                "price='" + total + '\''+
                 '}';
 
 
     }
 
-    public Order(String id, String name, String address, String floorApto, int bonus, boolean creditCard, String creditCardNumber, int cvv, int month, int year, int pay, Map<String, Integer> products, int price, String status, String consumerId, String businessId) {
+    public Order(String id, String name, String address, String floorApto, int bonus, boolean creditCard, String creditCardNumber, int cvv, int month, int year, int pay, Map<String, Integer> products, int total, String status, String consumerId, String businessId) {
 
         this.id = id;
         this.name = name;
@@ -63,7 +62,7 @@ public class Order {
         this.year = year;
         this.pay = pay;
         this.products = products;
-        this.price = price;
+        this.total = total;
         this.status = status;
         this.consumerId = consumerId;
         this.businessId = businessId;
@@ -169,12 +168,12 @@ public class Order {
         this.products = products;
     }
 
-    public int getPrice() {
-        return price;
+    public int getTotal() {
+        return total;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public String getStatus() {
