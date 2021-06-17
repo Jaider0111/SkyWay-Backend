@@ -18,8 +18,9 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public Order getOrderById(String orderId){
+    public Order getOrderById(String orderId) {
         return orderRepository.findOrderById(orderId);
+    }
 
 
     public Order setStatus(Order o) {
