@@ -39,4 +39,13 @@ public class ProductService {
     }
 
     public List<Product> getProducts() {return productRepository.findAll();}
+
+    public List<String> getProductsByCatOrSubcat(String category, String subcategory) {
+        List<Product> products;
+        if (subcategory.equals(""))
+            products = productRepository.findIdsByCategory(category);
+        else
+            products = productRepository.findIdsByCategoryAndSubcategory(category, subcategory);
+        return products.stream().map(Product::getId).collect(Collectors.toList());
+    }
 }
