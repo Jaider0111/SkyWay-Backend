@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 
 import java.util.Map;
+import java.util.Date;
 
 @Document(collection="orders")
 public class Order {
@@ -22,10 +23,10 @@ public class Order {
     private Map<String, Integer> products;
     private int total;
     private String status;
+    private Date date;
 
     private String consumerId;
     private String businessId;
-
 
     @Override
     public String toString(){
@@ -47,27 +48,7 @@ public class Order {
 
 
     }
-
-    public Order(String id, String name, String address, String floorApto, int bonus, boolean creditCard, String creditCardNumber, int cvv, int month, int year, int pay, Map<String, Integer> products, int total, String status, String consumerId, String businessId) {
-
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.floorApto = floorApto;
-        this.bonus = bonus;
-        this.creditCard = creditCard;
-        this.creditCardNumber = creditCardNumber;
-        this.cvv = cvv;
-        this.month = month;
-        this.year = year;
-        this.pay = pay;
-        this.products = products;
-        this.total = total;
-        this.status = status;
-        this.consumerId = consumerId;
-        this.businessId = businessId;
-    }
-
+  
     public Order(){
         super();
     }
@@ -199,4 +180,7 @@ public class Order {
     public void setBusinessId(String businessId) {
         this.businessId = businessId;
     }
+    
+    public Date getDate() { return date; }
+    public void setDate(Date date) { this.date = date; }
 }
