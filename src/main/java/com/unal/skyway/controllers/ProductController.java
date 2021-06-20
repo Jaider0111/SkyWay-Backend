@@ -43,9 +43,12 @@ public class ProductController {
 
     @GetMapping("/api/products/category")
     public List<String> getProductsByCatOrSubcat(@RequestParam String category, @RequestParam String subcategory){
-        System.out.println(category);
-        System.out.println(subcategory);
         return productService.getProductsByCatOrSubcat(category, subcategory);
+    }
+
+    @GetMapping("/api/products/businessId")
+    public List<String> getProductsByBusinessId(@RequestParam String businessId){
+        return productService.getProductsByBusinessId(businessId);
     }
   
     @GetMapping("/api/getProducts")

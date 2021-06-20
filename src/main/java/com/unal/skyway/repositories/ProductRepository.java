@@ -21,4 +21,7 @@ public interface ProductRepository extends MongoRepository<Product, String> {
     @Query(value="{category: ?0, subcategory: ?1}", fields="{_id : 1}")
     List<Product> findIdsByCategoryAndSubcategory(String category, String subcategory);
 
+    @Query(value="{businessId: ?0}", fields="{_id : 1}")
+    List<Product> findIdsByBusinessId(String category);
+
 }

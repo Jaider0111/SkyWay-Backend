@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CustomStoreDetailsService {
     @Autowired
@@ -39,4 +42,11 @@ public class CustomStoreDetailsService {
     }
 
     public Store getStoreById(String id) {return StoreRepository.findStoreById(id);}
+
+    public List<String> getByCategory(String category){
+        return StoreRepository.findStoresIdsByCategory(category)
+                .stream()
+                .map(Store::getId)
+                .collect(Collectors.toList());
+    }
 }

@@ -29,12 +29,12 @@ public class ProductService {
     }
 
     public List<String> getProductsByNameMach(String regex){
-        String name = "";
+        StringBuilder name = new StringBuilder();
         for(char i : regex.toCharArray()){
-            name += ".*" + i;
+            name.append(".*").append(i);
         }
-        name += ".*";
-        List<Product> products = productRepository.findIdByNameMatchesRegex(name);
+        name.append(".*");
+        List<Product> products = productRepository.findIdByNameMatchesRegex(name.toString());
         return products.stream().map(Product::getId).collect(Collectors.toList());
     }
 
@@ -46,6 +46,11 @@ public class ProductService {
             products = productRepository.findIdsByCategory(category);
         else
             products = productRepository.findIdsByCategoryAndSubcategory(category, subcategory);
+        return products.stream().map(Product::getId).collect(Collectors.toList());
+    }
+
+    public List<String> getProductsByBusinessId(String businessId) {
+        List<Product> products = productRepository.findIdsByBusinessId(businessId);
         return products.stream().map(Product::getId).collect(Collectors.toList());
     }
 }

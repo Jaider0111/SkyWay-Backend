@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
@@ -24,5 +25,10 @@ public class StoreController {
         return ResponseEntity.ok()
                 .header("StatusFind", (u == null) ? "failed" : "success")
                 .body(u);
+    }
+
+    @GetMapping("api/stores/category")
+    public List<String> getStoresByCategory(@RequestParam String category){
+        return storeService.getByCategory(category);
     }
 }
