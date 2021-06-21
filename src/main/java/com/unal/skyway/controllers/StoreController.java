@@ -11,7 +11,8 @@ import java.util.HashSet;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
+
 public class StoreController {
     @Autowired
     private CustomStoreDetailsService storeService;
@@ -30,5 +31,9 @@ public class StoreController {
     @GetMapping("api/stores/category")
     public List<String> getStoresByCategory(@RequestParam String category){
         return storeService.getByCategory(category);
+    }
+    @PutMapping("api/stores/update")
+    public Store update(@RequestBody Store store){
+        return storeService.updateStore(store);
     }
 }

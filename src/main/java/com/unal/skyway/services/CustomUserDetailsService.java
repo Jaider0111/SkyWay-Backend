@@ -69,6 +69,21 @@ public class CustomUserDetailsService {
 
         return UserRepository.save(user);
     }
+    public User updateUser(User user) {
+        User user1 = UserRepository.findUserById(user.id);
+        if(!(user1.getPassword().equals(user.getPassword()))){
+            user1.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        }
+        user1.setFirst_name(user.getFirst_name());
+        user1.setLast_name(user.getLast_name());
+        user1.setIdentification(user.getIdentification());
+        user1.setAddress(user.getAddress());
+        user1.setEmail(user.getEmail());
+        user1.setPhone(user.getPhone());
+        user1.setImage(user.getImage());
+
+        return UserRepository.save(user1);
+    }
     public  User deleteUserByEmail(String email){
         return UserRepository.deleteUserByEmail(email);
     }

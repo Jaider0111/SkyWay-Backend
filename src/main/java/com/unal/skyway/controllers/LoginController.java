@@ -17,7 +17,8 @@ import java.util.Map;
 
 @RestController
 
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
+
 
 public class LoginController {
     @Autowired
