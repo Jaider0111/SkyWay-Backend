@@ -11,7 +11,8 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
+
 public class ProductController {
 
     @Autowired
@@ -22,7 +23,6 @@ public class ProductController {
         Product p = productService.create(product);
         return p.getId();
     }
-
     @GetMapping("/api/products")
     public ResponseEntity<Product> getProduct(@RequestParam String id) {
         Product p = productService.getProductById(id);

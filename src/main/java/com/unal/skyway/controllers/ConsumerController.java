@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.unal.skyway.models.User;
 
 @RestController
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
 public class ConsumerController {
     @Autowired
     private CustomUserDetailsService userService;
@@ -21,5 +21,9 @@ public class ConsumerController {
         return ResponseEntity.ok()
                 .header("StatusFind", (u == null) ? "failed" : "success")
                 .body(u);
+    }
+    @PutMapping("api/users/update")
+    public User update(@RequestBody User user){
+        return userService.updateUser(user);
     }
 }

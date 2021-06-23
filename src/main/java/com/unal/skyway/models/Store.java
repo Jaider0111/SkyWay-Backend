@@ -21,6 +21,7 @@ public class Store {
     public String phone;
     public String email;
     public String address;
+    public String image;
     @DBRef
     public Set<Product> product;
 
@@ -103,6 +104,9 @@ public class Store {
     public void setProduct(Set<Product> product) {
         this.product = product;
     }
+    public String getImage() {return image;}
+
+    public void setImage(String image) {this.image = image;}
 
     public Store() {}
 

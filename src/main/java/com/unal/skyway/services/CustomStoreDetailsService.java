@@ -37,6 +37,23 @@ public class CustomStoreDetailsService {
         store.setPassword(bCryptPasswordEncoder.encode(store.getPassword()));
         return StoreRepository.save(store);
     }
+    public Store updateStore(Store store) {
+        Store store1 = StoreRepository.findStoreById(store.id);
+        if(!(store1.getPassword().equals(store.getPassword()))){
+            store1.setPassword(bCryptPasswordEncoder.encode(store.getPassword()));
+        }
+        store1.setName(store.getName());
+        store1.setCategory(store.getCategory());
+        store1.setIdentification(store.getIdentification());
+        store1.setAddress(store.getAddress());
+        store1.setEmail(store.getEmail());
+        store1.setPhone(store.getPhone());
+        store1.setSchedule(store.getSchedule());
+        store1.setImage(store.getImage());
+
+
+        return StoreRepository.save(store1);
+    }
     public  Store deleteStoreByEmail(String store){
         return StoreRepository.deleteStoreByEmail(store);
     }
