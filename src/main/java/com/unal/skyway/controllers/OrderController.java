@@ -1,7 +1,6 @@
 package com.unal.skyway.controllers;
 
 import com.unal.skyway.models.Order;
-import com.unal.skyway.models.Store;
 import com.unal.skyway.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +38,7 @@ public class OrderController {
     public List<Order> getAllPaid(@RequestParam String businessId, @RequestParam String consumerId) {
         List<Order> orders;
         if (!businessId.equals(""))
-            orders = orderService.getAllPaid(businessId);
+            orders = orderService.getOrdersByBusiness(businessId);
         else
             orders = orderService.getOrdersByUser(consumerId);
         return orders;

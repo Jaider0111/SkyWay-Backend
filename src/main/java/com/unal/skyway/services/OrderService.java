@@ -1,10 +1,8 @@
 package com.unal.skyway.services;
 
 import com.unal.skyway.models.Order;
-import com.unal.skyway.models.Store;
 import com.unal.skyway.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,9 +28,9 @@ public class OrderService {
         return null;
     }
 
-    public List<Order> getAllPaid(String businessId) {
+    public List<Order> getOrdersByBusiness(String businessId) {
         // return orderRepository.findAll(Sort.by(Sort.Direction.DESC, "date"));
-        return orderRepository.findOrdersByStatusAndBusinessId("paid", businessId);
+        return orderRepository.findOrdersByBusinessId(businessId);
     }
 
     public List<Order> getOrdersByUser(String consumerId) {
