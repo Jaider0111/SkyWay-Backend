@@ -30,6 +30,7 @@ public class OrderController {
     @PutMapping("/api/orders/update")
     public String setStatus(@RequestBody Order order) {
         Order o = orderService.setStatus(order);
+        if(o == null) return "failed";
         return o.getId();
     }
 

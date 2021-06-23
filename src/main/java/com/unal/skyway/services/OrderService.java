@@ -25,8 +25,9 @@ public class OrderService {
 
     public Order setStatus(Order o) {
         Order order = orderRepository.findOrderById(o.getId());
-        order.setStatus(o.getStatus());
-        return orderRepository.save(order);
+        if(order != null)
+            return orderRepository.save(o);
+        return null;
     }
 
     public List<Order> getAllPaid(String businessId) {
