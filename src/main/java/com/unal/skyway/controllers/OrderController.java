@@ -29,6 +29,7 @@ public class OrderController {
 
     @PutMapping("/api/orders/update")
     public String setStatus(@RequestBody Order order) {
+        System.out.println(order);
         Order o = orderService.setStatus(order);
         if(o == null) return "failed";
         return o.getId();
