@@ -53,4 +53,20 @@ public class ProductService {
         List<Product> products = productRepository.findIdsByBusinessId(businessId);
         return products.stream().map(Product::getId).collect(Collectors.toList());
     }
+
+    public String deleteProductById(String id) {
+        boolean ans = productRepository.existsById(id);
+        if (ans) {
+            productRepository.deleteProductById(id);
+            return "success";
+        }else
+            return "error";
+    }
+
+    public Product updateProduct(Product p) {
+        boolean ans = productRepository.existsById(p.getId());
+        if (ans)
+            return productRepository.save(p);
+        else return null;
+    }
 }

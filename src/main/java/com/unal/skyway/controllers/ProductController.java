@@ -56,4 +56,18 @@ public class ProductController {
     {
         return productService.getProducts();
     }
+
+    @DeleteMapping("/api/products")
+    public String deleteProduct(@RequestParam String id) {
+        if(productService.deleteProductById(id).equals("success"))
+            return id;
+        else return null;
+    }
+
+    @PutMapping("/api/products")
+    public String updateProduct(@RequestBody Product p) {
+        Product p1 = productService.updateProduct(p);
+        if(p1 != null) return p1.getId();
+        else return null;
+    }
 }

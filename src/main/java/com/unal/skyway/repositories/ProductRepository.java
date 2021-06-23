@@ -9,6 +9,8 @@ import java.util.List;
 public interface ProductRepository extends MongoRepository<Product, String> {
     Product findProductById(String id);
 
+    void deleteProductById(String id);
+
     @Query(value="{}", fields="{_id : 1}")
     List<Product> findId();
 
