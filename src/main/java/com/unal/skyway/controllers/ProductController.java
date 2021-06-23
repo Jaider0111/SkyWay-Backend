@@ -23,12 +23,10 @@ public class ProductController {
         Product p = productService.create(product);
         return p.getId();
     }
-    @GetMapping("/api/products")
-    public ResponseEntity<Product> getProduct(@RequestParam String id) {
+    @GetMapping("/api/products/id")
+    public Product getProduct(@RequestParam String id) {
         Product p = productService.getProductById(id);
-        return ResponseEntity.ok()
-                .header("StatusFind", (p == null) ? "failed" : "success")
-                .body(p);
+        return p;
     }
 
     @GetMapping("/api/products/ids")
